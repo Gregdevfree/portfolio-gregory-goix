@@ -1,0 +1,116 @@
+/*
+Theme Name: Portfolio Grégory Goix
+Theme URI: https://gregory-goix.com
+Author: Goix Grégory
+Author URI: https://gregory-goix.com
+Description: thème personnalisé pour le site de mon portfolio.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: portfolio-gregory-goix
+*/
+
+/* Variables et reset */
+:root {
+    --primary-color: #b2f142; 
+    --secondary-color: #262626;
+    --thrid-color: #d8d9dd;
+    --fourth-color: #E6E6FA;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+@media screen and (max-width: 374px) {
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #262626;
+      color: #b2f142;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+    body * {
+      display: none;
+    }
+    body::before {
+      content: "Votre écran est trop petit pour afficher ce site. Veuillez utiliser un appareil avec une largeur d'écran supérieure à 374px.";
+      display: block;
+      max-width: 90%;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
+
+/* Marges intérieures pour l'accessibilté en mode responsive */
+@media screen and (max-width: 767px) and (min-width: 374px) {
+  body {
+      margin-left: 10px;
+      margin-right: 10px;
+  }
+}
+
+/* Fonts */
+@font-face {
+  font-display: swap;
+  font-family: 'Space Mono';
+  src: url('assets/fonts/space-mono-v14-latin-regular.woff2') format('woff2'),
+       url('assets/fonts/space-mono-v14-latin-regular.woff') format('woff'),
+       url('assets/fonts/space-mono-v14-latin-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-display: swap;
+  font-family: 'Poppins';
+  src: url('assets/fonts/poppins-v22-latin-regular.woff2') format('woff2'),
+       url('assets/fonts/poppins-v22-latin-regular.woff') format('woff'),
+       url('assets/fonts/poppins-v22-latin-regular.ttf') format('truetype');
+}
+
+
+/* Desktop */
+h1 {
+    font-family: 'Space Mono';
+    font-size: 96px;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 142.18px;
+    color: var(--primary-color);
+  }
+  
+  h2 {
+    font-family: 'Space Mono';
+    font-size: clamp(24px, 5vw, 66px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.2;
+    color: var(--primary-color);
+    text-align: left;
+    text-decoration-skip-ink: none;
+  }
+  
+  h3 {
+    font-family: 'Space Mono';
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26.66px;
+    letter-spacing: 0.1em;
+    color: var(--primary-color);
+    text-align: left;
+    text-decoration-skip-ink: none;
+  }
+  
+  p {
+    font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: var(--primary-color);
+  }
+  
