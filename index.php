@@ -1,3 +1,12 @@
+<?php
+/**
+ * Page index
+ * 
+ * @package Portfolio Grégory Goix
+ */
+ if ( ! defined( 'ABSPATH' ) ) exit; // Sécurité WordPress
+?>
+
 <?php get_header(); ?>
 
 <div class="content-area">

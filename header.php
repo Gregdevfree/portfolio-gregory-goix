@@ -1,9 +1,11 @@
+<?php echo '<!-- Template utilisé : header.php -->'; ?>
 <?php
 /**
  * Template name : header
   *
- * @package portfolio-gregory-goix
+ * @package Portfolio Grégory Goix
  */
+if ( ! defined( 'ABSPATH' ) ) exit; // Sécurité WordPress
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +27,7 @@
                 if (has_custom_logo()) {
                     the_custom_logo();
                 } else {
-                    echo '<a href="' . home_url() . '" class="nathalie-mota">' . get_bloginfo('name') . '</a>';
+                    echo '<a href="' . home_url() . '" class="gregory-goix">' . get_bloginfo('name') . '</a>';
                 }
                 ?>
             </div>
