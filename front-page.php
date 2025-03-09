@@ -26,7 +26,7 @@ get_header();
         
         <!--Infinite Jury Comments-->
         <div class="title-jury-comments">
-            <h2>Commentaires de mes jurys évaluateurs (développeurs pros)</h2>
+            <h2>Commentaires de mes jurys évaluateurs pros</h2>
         </div>
         <div class="marquee-container">
             <div class="marquee">
@@ -64,7 +64,6 @@ get_header();
         <div class="title-about-me">
             <h2>À propos de moi</h2>
         </div>  
-        
         <section id="a-propos-de-moi">
             <div class="thumbnail-gg">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/gregory_goix.webp" alt="Grégory Goix" />
@@ -78,6 +77,7 @@ get_header();
                 J'ai donc repris le chemin des études pour suivre la formation diplômante d'OpenClassrooms.
                 Je suis à votre disposition pour étudier votre projet, votre proposition. A bientôt !
                 </p>
+                <button type="button" class="btn-submit" id="contactBtn">Me contacter</button>
             </div>
         </section>
         <div class="skills">
@@ -97,7 +97,7 @@ get_header();
             <span style="--i:10;"><img src="<?php echo esc_url(home_url('/wp-content/uploads/2025/03/image10.webp')); ?>" alt="Image 10"></span>
         </div>        
         <div class="contact-section">
-            <button type="button" class="btn-submit" id="contactBtn">Me contacter</button>
+            
             <?php
             $pdf_url = wp_get_attachment_url(108); // 108=l'ID du PDF depuis la médiathèque WordPress
             if ($pdf_url) :

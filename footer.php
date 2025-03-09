@@ -16,10 +16,10 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Sécurité WordPress
                         'theme_location'  => 'footer-menu',
                         'menu_class'      => 'footer-menu',
                         'container'       => false,
-                        'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s<li class="copyright-item">TOUS DROITS RÉSERVÉS GRÉGORY GOIX</li></ul>',
+                        'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s<li class="copyright-item">TOUS DROITS RÉSERVÉS</li></ul>',
                     ));
                 } else {
-                    echo '<ul class="footer-menu"><li class="copyright-item">TOUS DROITS RÉSERVÉS GRÉGORY GOIX</li></ul>';
+                    echo '<ul class="footer-menu"><li class="copyright-item">TOUS DROITS RÉSERVÉS</li></ul>';
                 }
                 ?>
             </nav>

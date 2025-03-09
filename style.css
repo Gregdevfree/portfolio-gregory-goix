@@ -37,19 +37,21 @@ body {
   background-color: var(--secondary-color);
   color: var(--primary-color);
   font-family: 'Poppins';
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-/* Desktop */
+/* Desktop/Laptop*/
 h1 {
-  font-size: 50px;
+  font-size: 64px;
   font-weight: 700;
   font-style: italic;
-  line-height: 120px;
+  line-height: 68px;
   color: var(--primary-color);
 }
 
 h2 {
-  font-size: 36px;
+  font-size: 48px;
   font-weight: 400;
   font-style: italic;
   line-height: 1.2;
@@ -59,7 +61,7 @@ h2 {
 }
 
 h3 {
-  font-size: 26px;
+  font-size: 32px;
   font-weight: 400;
   line-height: 26.66px;
   letter-spacing: 0.1em;
@@ -73,39 +75,6 @@ p {
   font-weight: 500;
   line-height: 24px;
   color: var(--primary-color);
-}
-
-
-@media screen and (max-width: 374px) {
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background-color: var(--secondary-color);
-      color: var(--primary-color);
-      font-family: 'Poppins';
-      text-align: center;
-      overflow: hidden;
-    }
-    body * {
-      display: none;
-    }
-    body::before {
-      content: "Votre écran est trop petit pour afficher ce site. Veuillez utiliser un appareil avec une largeur d'écran supérieure à 374px.";
-      display: block;
-      max-width: 90%;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-  }
-
-/* Marges intérieures pour l'accessibilté en mode responsive */
-@media screen and (max-width: 767px) and (min-width: 374px) {
-  body {
-      margin-left: 10px;
-      margin-right: 10px;
-  }
 }
 
 /* Style page 404 */
@@ -124,8 +93,10 @@ p {
   color: var(--primary-color);
 }
 
+.btn-404 {
+  margin: 0 auto;
+}
 /* voir .btn-404 et .btn-404:hover avec les autres boutons */
-
 
 /* Page Wrapper for page.php*/
 .content-wrapper {
@@ -212,6 +183,8 @@ p {
   text-align: center;
   color: white;
   text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color), 0 0 40px var(--primary-color);
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .hero-content h2,
@@ -322,6 +295,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 auto;
   margin-top: 30px;
   margin-bottom: 30px;
 }
@@ -359,13 +333,13 @@ p {
 .wp-block-button__link:hover {
   background-color: var(--fourth-color) !important;
   color: #0A0202 !important;
+  border: 4px solid var(--secondary-color);
   transform: scale(1.1);
   font-size: 18px;
   font-weight: 700;
 }
 
 /*Section commentaires des jurys*/
-
 .title-jury-comments h2{
   text-align: center;
   margin-top: 30px;
@@ -404,8 +378,8 @@ p {
 
 .thumbnail-gg img {
   display: block;
-  width: 190px;
-  height:220px;
+  width: 170px;
+  height:200px;
   border-radius: 25%;
   border: 5px solid var(--secondary-color); /* Ajoute une bordure épaisse */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajoute une ombre subtile pour un effet de profondeur */
@@ -420,15 +394,20 @@ p {
   padding: 20px;
   border-radius: 70px 10px 70px 10px;
   background-color: var(--third-color);
-  margin-bottom: 60px;
+  margin-bottom: 50px;
 }
 
 .presentation p{
   color: var(--secondary-color);
   margin-left: 30px;
   line-height: 1.5; /* Augmente l’interligne */
+  margin-bottom: 30px;
 }
 
+#contactBtn {
+  display: block;
+  margin-left: 31%;
+}
 
 /* Skills section */
 .skills h2 {
@@ -484,9 +463,12 @@ p {
 .contact-section {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Disposition en ligne par défaut */
   align-items: center;
+  justify-content: center;
   width: 100%;
+  gap: 50px; /* Espace entre les éléments */
+  flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
 }
 
 #contactBtn,
@@ -496,7 +478,6 @@ p {
   text-align: center;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
   width: 200px;
   height: 50px;
   text-decoration: none;
@@ -508,8 +489,9 @@ p {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  margin-bottom: 60px;
   transition: transform 0.3s ease, font-size 0.3s ease;
+  margin-top: 25px;
+  margin-bottom: 15px;
 }
 
 #contactBtn:hover,
@@ -518,6 +500,7 @@ p {
   transform: scale(1.2);
   background-color: var(--primary-color);
   color: var(--secondary-color);
+  border: 4px solid var(--secondary-color);
   font-size: 18px;
   font-weight: 700;
 }
@@ -532,48 +515,37 @@ p {
 
 /* Conteneur pour le texte et le bouton LinkedIn */
 .linkedin-container {
-  position: absolute;
-  right: 10%;
-  top: -25px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100px; /* Même hauteur que précédemment */
+  position: relative; /* Changé de absolute à relative */
+  order: 2; /* Position par défaut - sera modifiée en responsive */
 }
 
 /* Style pour le texte au-dessus du bouton LinkedIn */
 .linkedin-text {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
   font-size: 16px;
   font-style: italic;
-  color: var(--primary-color); /* Utilisez la couleur de votre thème */
+  color: var(--primary-color);
   text-align: center;
 }
 
 .linkedin-button {
-  position: static;
-  right: 0;
-  height: 100px; /* Hauteur combinée approximative des deux boutons + marge */
   display: flex;
   align-items: center;
   transition: transform 0.3s ease-in-out;
 }
 
 .linkedin-image {
-  width: 100px;
+  width: 150px;
   height: auto;
+  border-radius: 0px;
 }
 
 .linkedin-button:hover {
-  transform: scale(1.1); /* Effet de zoom au survol */
+  transform: scale(1.1);
 }
-
-.linkedin-image {
-  width: 150px; /* Ajuste la taille selon tes besoins */
-  height: auto;
-  border-radius: 0px; /* Optionnel : arrondi des bords */
-}
-
 
 .site-footer {
   width: 100%;
@@ -609,7 +581,6 @@ p {
   padding: 0;
 }
 
-
 .footer-menu li a {
   text-align: center;
   text-decoration: none;
@@ -628,7 +599,6 @@ p {
   font-size: 20px;
   font-weight: 400;
 }
-
 
 /* Modale de contact */
 .modal {
@@ -678,17 +648,6 @@ p {
 .modal-header p {
   text-align: center;
   margin-top: 10px;
-}
-
-.modal-header > img {
-  width: 887px;
-  height: 100%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
 }
 
 @-webkit-keyframes animatetop {
@@ -771,33 +730,60 @@ textarea.wpcf7-form-control {
   margin: -0.5em 0.5em 3em !important;
 }
 
+/* Désactivation du hover sur les écrans tactiles */
+@media (hover: none) {
+  .button:hover {
+    background-color: initial;
+  }
+  /* Ajoute un effet de pression au clic */
 
-/*mobile devices (portrait and landscape)*/
-@media only screen and (max-width: 767px) {
+  .button:active {
+    transform: scale(0.95);
+  }
+}
+@media screen and (max-width: 374px) {
+  body * {
+    display: none;
+  }
+  body::before {
+    content: "Votre écran est trop petit pour afficher ce site. Veuillez utiliser un appareil avec une largeur d'écran supérieure à 374px.";
+    display: block;
+    max-width: 90%;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+/* Marges intérieures pour l'accessibilté en mode responsive */
+@media screen and (max-width: 767px) and (min-width: 375px) {
+  body {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
   h1 {
-    font-size: 32px;
+    font-size: 40px;
     font-weight: 700;
     font-style: italic;
     color: var(--primary-color);
   }
 
   h2 {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 400;
     font-style: italic;
     color: var(--primary-color);
   }
 
   h3 {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 400;
     color: var(--primary-color);
   }
 
   p {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 300;
-    color: var(--primary-color);
+    color: var(--secondary-color);
   }
 
   .site-header {
@@ -808,7 +794,7 @@ textarea.wpcf7-form-control {
     align-items: center;
     box-shadow: 0px 4px 4px 0px #00000017;
   }
-
+  
   .container-header {
     width: 100%;
     height: 72px;
@@ -873,7 +859,7 @@ textarea.wpcf7-form-control {
 
   #menu-toggle {
     position: fixed;
-    top: 80px;
+    top: 127px;
     left: 0;
     width: 100%;
     height: 100vh;
@@ -900,7 +886,7 @@ textarea.wpcf7-form-control {
 
   #menu-toggle li a {
     color: var(--secondary-color);
-    font-size: 44px;
+    font-size: 40px;
     font-weight: 400;
     text-decoration: none;
     margin: 10px 0;
@@ -913,6 +899,91 @@ textarea.wpcf7-form-control {
   #menu-toggle > ul > li:nth-child(2),
   #menu-toggle > ul > li:nth-child(3) {
     margin-top: 25px;
+  }
+
+  .hero-content p {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+  }
+
+  .hero-content h2 {
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .swiper {
+    width: 80%;
+    height: 180px;
+  }
+
+  .title-jury-comments h2{
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 25px;
+  }
+
+  .post-thumbnail img,
+  .post-content {
+    width: 75%;
+  }
+
+  .wp-block-button__link {
+    margin: 0;
+    margin-left: -72px;
+    margin-top: 25px;
+    margin-bottom: 35px;
+  }
+  .post-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 50px;
+    margin-right: -5px;
+  }
+  
+  /* Réorganisation de l'ordre des éléments */
+  .thumbnail-gg img {
+    display: block;
+    width: 120px;
+    height:140px;
+  }
+
+  #a-propos-de-moi {
+    flex-direction: column; /* Passe en colonne */
+    align-items: center; /* Centre les éléments horizontalement */
+    text-align: center; /* Centre le texte */
+    gap: 20px; /* Ajoute un espace entre les éléments */
+  }
+
+  .presentation p {
+    margin-left: 0; /* Supprime la marge gauche pour centrer le texte */
+    margin-bottom: 20px; /* Ajoute un espacement en bas */
+    text-align: center; /* Centre le texte */
+    line-height: normal; /* Ajuste l’interligne si nécessaire */
+  }
+
+  #contactBtn {
+    margin: 0 auto; /* Centre le bouton */
+  }
+
+  .contact-section {
+    flex-direction: column; /* Mise en colonne en responsive */
+  }
+  .open-pdf-btn {
+    order: 1;
+  }
+    
+  .linkedin-container {
+    order: 2; /* Mettre en troisième position comme demandé */
+    right: auto; /* Réinitialiser la position */
+    top: auto;
+    margin-top: 20px;
   }
 
   .site-footer {
@@ -944,27 +1015,31 @@ textarea.wpcf7-form-control {
 
   .modal-content {
     width: 286px;
-    height: 583px;
+    height: auto;
+    padding: 5px;
   }
 
-  .modal-header > img {
-    width: 460px;
-    height: 100%;
-    position: absolute;
-    left: 50%;
-    top: 50%;
+  .modal-header h2 {
+    margin-top: 20px;
   }
 
+  .modal-header p {
+    font-size: 12px;
+    color : var(--primary-color) !important;
+  }
   .modal-body {
     width: 190px;
     height: 510px;
-    margin-top: 15px;
+    margin-top: 5px;
     padding: 2px 16px;
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+  }
+  .modal-body p {
+    color: var(--primary-color);
   }
 
   .wpcf7-form p:nth-child(2) input,
@@ -999,10 +1074,139 @@ textarea.wpcf7-form-control {
   }
 }
 
+/* Tablet Devices (portrait and landscape) ex iPad Mini*/
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  body {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 
-/* Tablet Devices (portrait and landscape) */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {}
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    font-style: italic;
+    color: var(--primary-color);
+  }
 
-/* Laptop Devices (portrait and landscape) */
-@media only screen and (min-width: 1024px) and (max-width: 1439px) {}
+  h2 {
+    font-size: 40px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--primary-color);
+  }
 
+  h3 {
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--primary-color);
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--secondary-color);
+  }
+
+  .site-logo img {
+    width: 166px;
+    height: auto;
+    position: absolute;
+    top: 20px;
+    left: 25px;
+  }
+
+  .hero-content h2 {
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .hero-content p {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+  }
+
+  .swiper {
+    width: 80%;
+    height: 300px;
+  }
+
+  .post-thumbnail img,
+  .post-content {
+    width: 75%;
+  }
+
+  .wp-block-button__link {
+    margin: 0;
+    margin-left: -40px;
+    margin-top: 25px;
+    margin-bottom: 35px;
+  }
+
+  .title-jury-comments h2{
+    margin: 0 auto;
+    width: 70%;
+    margin-bottom: 30px;
+  }
+
+  #contactBtn {
+    margin-left: 13%;
+  }
+
+  .thumbnail-gg img {
+    display: block;
+    width: 130px;
+    height:152px;
+  }
+}
+
+/* Laptop Devices (portrait and landscape) ex iPad Pro*/
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+  body {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  .site-logo img {
+    width: 180px;
+    height: auto;
+    position: absolute;
+    top: 20px;
+    left: 25px;
+  }
+
+  .hero-content h2 {
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .swiper {
+    width: 80%;
+    height: 400px;
+  }
+
+  .wp-block-button__link {
+    margin: 0;
+    margin-left: -28px;
+    margin-top: 25px;
+    margin-bottom: 35px;
+  }
+  
+  .title-jury-comments h2{
+    margin: 0 auto;
+    width: 80%;
+    margin-bottom: 30px;
+  }
+
+  #contactBtn {
+    margin-left: 23%;
+  }
+
+  .thumbnail-gg img {
+    display: block;
+    width: 150px;
+    height:176px;
+  }
+}
