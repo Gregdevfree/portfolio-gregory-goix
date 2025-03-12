@@ -99,7 +99,7 @@ get_header();
         <div class="contact-section">
             
             <?php
-            $pdf_url = wp_get_attachment_url(108); // 108=l'ID du PDF depuis la médiathèque WordPress
+            $pdf_url = wp_get_attachment_url(360); // 360=l'ID du PDF depuis la médiathèque WordPress
             if ($pdf_url) :
             ?>
                 <a href="<?php echo esc_url($pdf_url); ?>" target="_blank" class="open-pdf-btn">

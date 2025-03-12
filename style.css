@@ -77,6 +77,35 @@ p {
   color: var(--primary-color);
 }
 
+/* Optimisation pour tous les boutons */
+#menu-header-menu li a,
+.wp-block-button__link,
+#contactBtn,
+.open-pdf-btn,
+.btn-404,
+.linkedin-button,
+.footer-menu li a,
+.wpcf7-submit,
+.swiper-button-next, 
+.swiper-button-prev,
+.post-navigation > a:nth-child(1),
+.post-navigation > a:nth-child(2) {
+  touch-action: manipulation; /* Améliore la réactivité tactile */
+  -webkit-tap-highlight-color: transparent; /* Supprime le flash bleu au toucher sur iOS */
+}
+
+/* Augmentation de la zone de clic pour une meilleure accessibilité tactile */
+#menu-header-menu li a,
+.footer-menu li a {
+  padding: 12px 8px; /* Zone de clic plus grande */
+  text-decoration: none;
+  white-space: nowrap;
+  color: var(--primary-color);
+  font-size: 20px;
+  font-weight: 400;
+  transition: color 0.3s ease-in-out;
+}
+
 /* Style page 404 */
 .container-404 {
   text-align: center;
@@ -237,6 +266,8 @@ p {
 .swiper-button-next, .swiper-button-prev {
   color: var(--fourth-color) !important;
   transition: opacity 0.3s;
+  min-width: 44px; /* Taille minimale pour zone de clic */
+  min-height: 44px;
 }
 .swiper-button-next:hover, .swiper-button-prev:hover {
   opacity: 0.7;
@@ -306,6 +337,8 @@ p {
   font-size: 20px !important;
   margin-right: 30px;
   text-decoration: none;
+  padding: 10px 5px; /* Zone de clic plus grande */
+  display: inline-block;
 }
 
 .post-navigation > a:nth-child(1):hover,
@@ -480,6 +513,7 @@ p {
   align-items: center;
   width: 200px;
   height: 50px;
+  min-height: 50px; /* Taille minimale pour touches */
   text-decoration: none;
   color: var(--primary-color);
   background: #0A0202;
@@ -489,7 +523,7 @@ p {
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.3s ease, font-size 0.3s ease;
+  transition: transform 0.3s ease, font-size 0.3s ease, background-color 0.3s ease;
   margin-top: 25px;
   margin-bottom: 15px;
 }
@@ -604,7 +638,7 @@ p {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 10000; /* Supérieur au z-index du menu */
   left: 0;
   top: 0;
   width: 100%;
@@ -623,7 +657,7 @@ p {
   background-color: var(--secondary-color);
   margin: 5% auto;
   width: 597px;
-  height: 769px;
+  height: auto;
   padding-top: 18px;
   border: 5px solid var(--primary-color);
   overflow: hidden;
@@ -675,8 +709,9 @@ p {
 
 .wpcf7-form-control.wpcf7-text,
 .wpcf7-form-control.wpcf7-textarea {
-  font-size: 14px;
-  font-weight: 500;
+  font-family: 'Poppins';
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .wpcf7-form p:nth-child(2) input,
@@ -705,6 +740,7 @@ textarea.wpcf7-form-control {
 .wpcf7-submit {
   width: 263px;
   height: 50px;
+  min-height: 50px; /* Taille minimale pour touches */
   background: #D8D8D8;
   box-shadow: 0px 2px 1px 0px #00000005;
   font-size: 14px;
@@ -713,6 +749,7 @@ textarea.wpcf7-form-control {
   border-radius: 2px;
   cursor: pointer;
   margin-top: 15px;
+  transition: background-color 0.3s ease, color 0.3s ease, font-size 0.3s ease, font-weight 0.3s ease;
 }
 
 .wpcf7-submit:hover,
@@ -730,31 +767,154 @@ textarea.wpcf7-form-control {
   margin: -0.5em 0.5em 3em !important;
 }
 
-/* Désactivation du hover sur les écrans tactiles */
-@media (hover: none) {
-  .button:hover {
-    background-color: initial;
-  }
-  /* Ajoute un effet de pression au clic */
-
-  .button:active {
-    transform: scale(0.95);
+/* Positionner la modale en dessous du header en mode paysage */
+@media (orientation: landscape) {
+  .modal-content {
+    margin-top: 80px; /* Ajustez cette valeur en fonction de la hauteur de votre header */
   }
 }
-@media screen and (max-width: 374px) {
+
+/* Forcer l'affichage en mode portrait */
+@media (orientation: landscape) and (max-width: 768px) {
+  body {
+    transform: rotate(90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+}
+
+/* Style pour désactiver les interactions du carrousel pendant que le menu/modale est ouvert */
+.swiper-disabled .swiper-button-next,
+.swiper-disabled .swiper-button-prev,
+.swiper-disabled .swiper-pagination {
+  pointer-events: none !important;
+  opacity: 0.5 !important;
+}
+
+/* Effets hover pour écrans non tactiles uniquement */
+@media (hover: hover) {
+  #menu-header-menu li a:hover {
+    font-weight: 700;
+  }
+  
+  .swiper-button-next:hover, .swiper-button-prev:hover {
+    opacity: 0.7;
+  }
+  
+  .post-navigation > a:nth-child(1):hover,
+  .post-navigation > a:nth-child(2):hover {
+    color: var(--primary-color);
+  }
+
+  .wp-block-button__link:hover {
+    background-color: var(--fourth-color) !important;
+    color: #0A0202 !important;
+    border: 4px solid var(--secondary-color);
+    transform: scale(1.1);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  #contactBtn:hover,
+  .open-pdf-btn:hover,
+  .btn-404:hover {
+    transform: scale(1.2);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: 4px solid var(--secondary-color);
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+
+  .linkedin-button:hover {
+    transform: scale(1.1);
+  }
+  
+  .footer-menu li a:hover {
+    font-weight: 700;
+  }
+  
+  .wpcf7-submit:hover,
+  .wpcf7-submit:focus {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+/* Effets pour appareils tactiles (remplace hover par active) */
+@media (hover: none) {
+  /* Effet au clic plutôt qu'au survol */
+  #menu-header-menu li a:active {
+    font-weight: 700;
+  }
+  
+  .swiper-button-next:active, .swiper-button-prev:active {
+    opacity: 0.7;
+  }
+  
+  .post-navigation > a:nth-child(1):active,
+  .post-navigation > a:nth-child(2):active {
+    color: var(--primary-color);
+  }
+  
+  .wp-block-button__link:active {
+    background-color: var(--fourth-color) !important;
+    color: #0A0202 !important;
+    border: 4px solid var(--secondary-color);
+    transform: scale(0.95); /* Effet d'enfoncement au toucher */
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  #contactBtn:active,
+  .open-pdf-btn:active,
+  .btn-404:active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: 4px solid var(--secondary-color);
+    transform: scale(0.95); /* Effet d'enfoncement au toucher */
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .linkedin-button:active {
+    transform: scale(0.95); /* Effet d'enfoncement au toucher */
+  }
+  
+  .footer-menu li a:active {
+    font-weight: 700;
+  }
+  
+  .wpcf7-submit:active {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-size: 16px;
+    font-weight: 700;
+    transform: scale(0.95); /* Effet d'enfoncement au toucher */
+  }
+}
+
+@media screen and (max-width: 319px) {
   body * {
     display: none;
   }
   body::before {
-    content: "Votre écran est trop petit pour afficher ce site. Veuillez utiliser un appareil avec une largeur d'écran supérieure à 374px.";
+    content: "Votre écran est trop petit pour afficher ce site. Veuillez utiliser un appareil avec une largeur d'écran supérieure à 320px.";
     display: block;
     max-width: 90%;
     font-size: 16px;
     line-height: 1.5;
   }
 }
-/* Marges intérieures pour l'accessibilté en mode responsive */
-@media screen and (max-width: 767px) and (min-width: 375px) {
+/* Téléphones mobiles et petits appareils */
+@media screen and (min-width: 320px) and (max-width: 767px) {
   body {
     margin-left: 10px;
     margin-right: 10px;
@@ -794,7 +954,7 @@ textarea.wpcf7-form-control {
     align-items: center;
     box-shadow: 0px 4px 4px 0px #00000017;
   }
-  
+
   .container-header {
     width: 100%;
     height: 72px;
@@ -811,7 +971,7 @@ textarea.wpcf7-form-control {
     width: 166px;
     height: auto;
     position: absolute;
-    top: 20px;
+    top: 10px;
     left: 25px;
   }
 
@@ -872,24 +1032,38 @@ textarea.wpcf7-form-control {
     transition: transform 0.3s ease-out;
     z-index: 9999;
     margin-top: -7px;
+    overflow: auto; /* Pour permettre le défilement si nécessaire */
   }
 
   #menu-toggle.open {
     transform: translateX(0);
     background-color: var(--primary-color);
+    backdrop-filter: blur(5px); /* Effet de flou pour le fond */
   }
 
   #menu-toggle ul {
     list-style: none;
     text-align: center;
+    padding: 0;
+    margin: 0;
   }
 
+  /* Augmentation de la zone de clic pour menu mobile */
   #menu-toggle li a {
-    color: var(--secondary-color);
-    font-size: 40px;
-    font-weight: 400;
+    display: block;
+    padding: 15px 10px; /* Plus grand pour faciliter le toucher */
+    margin: 5px 0;
+    font-size: 32px;
+    font-weight: 700;
     text-decoration: none;
-    margin: 10px 0;
+    color: var(--secondary-color);
+  }
+
+  body.no-scroll {
+    overflow: hidden;
+    position: fixed; /* Fixer la position du body quand le menu/modale est ouvert */
+    width: 100%;
+    height: 100%;
   }
 
   #menu-toggle > ul > li:nth-child(1) {
@@ -918,7 +1092,7 @@ textarea.wpcf7-form-control {
     height: 180px;
   }
 
-  .title-jury-comments h2{
+  .title-jury-comments h2 {
     width: 80%;
     margin: 0 auto;
     margin-top: 30px;
@@ -927,15 +1101,16 @@ textarea.wpcf7-form-control {
 
   .post-thumbnail img,
   .post-content {
-    width: 75%;
+    width: 80%;
   }
 
   .wp-block-button__link {
     margin: 0;
-    margin-left: -72px;
+    margin-left: -60px;
     margin-top: 25px;
     margin-bottom: 35px;
   }
+
   .post-navigation {
     display: flex;
     align-items: center;
@@ -946,12 +1121,12 @@ textarea.wpcf7-form-control {
     margin-left: 50px;
     margin-right: -5px;
   }
-  
+
   /* Réorganisation de l'ordre des éléments */
   .thumbnail-gg img {
     display: block;
     width: 120px;
-    height:140px;
+    height: 140px;
   }
 
   #a-propos-de-moi {
@@ -970,15 +1145,18 @@ textarea.wpcf7-form-control {
 
   #contactBtn {
     margin: 0 auto; /* Centre le bouton */
+    width: 180px; /* Légèrement plus petit sur mobile */
   }
 
   .contact-section {
     flex-direction: column; /* Mise en colonne en responsive */
   }
+
   .open-pdf-btn {
     order: 1;
+    width: 180px; /* Légèrement plus petit sur mobile */
   }
-    
+
   .linkedin-container {
     order: 2; /* Mettre en troisième position comme demandé */
     right: auto; /* Réinitialiser la position */
@@ -1025,8 +1203,9 @@ textarea.wpcf7-form-control {
 
   .modal-header p {
     font-size: 12px;
-    color : var(--primary-color) !important;
+    color: var(--primary-color) !important;
   }
+
   .modal-body {
     width: 190px;
     height: 510px;
@@ -1038,6 +1217,7 @@ textarea.wpcf7-form-control {
     align-items: center;
     flex-direction: column;
   }
+
   .modal-body p {
     color: var(--primary-color);
   }
@@ -1074,7 +1254,7 @@ textarea.wpcf7-form-control {
   }
 }
 
-/* Tablet Devices (portrait and landscape) ex iPad Mini*/
+/* Tablet Devices (portrait and landscape) ex iPad Mini */
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   body {
     margin-left: 10px;
@@ -1127,6 +1307,15 @@ textarea.wpcf7-form-control {
     margin-bottom: 30px;
   }
 
+  .modal-content {
+    width: 400px;
+  }
+
+  .modal-body p,
+  .modal-header p {
+    color: var(--primary-color);
+  }
+
   .swiper {
     width: 80%;
     height: 300px;
@@ -1139,35 +1328,82 @@ textarea.wpcf7-form-control {
 
   .wp-block-button__link {
     margin: 0;
-    margin-left: -40px;
+    margin-left: -25px;
     margin-top: 25px;
     margin-bottom: 35px;
   }
 
-  .title-jury-comments h2{
+  .title-jury-comments h2 {
     margin: 0 auto;
     width: 70%;
     margin-bottom: 30px;
   }
 
   #contactBtn {
-    margin-left: 13%;
+    left: 50%;
   }
 
   .thumbnail-gg img {
     display: block;
     width: 130px;
-    height:152px;
+    height: 152px;
+  }
+
+  /* Assurer une distance suffisante entre les éléments du menu pour éviter les clics accidentels */
+  #menu-header-menu li {
+    margin: 0 10px;
+  }
+
+  /* Styles spécifiques pour le mode portrait */
+  @media (orientation: portrait) {
+    .container {
+      width: 90%;
+      margin: 0 auto;
+    }
+
+    .swiper {
+      height: 250px;
+    }
+
+    .hero-content h2 {
+      width: 90%;
+    }
+
+    .post-thumbnail img,
+    .post-content {
+      width: 90%;
+    }
+  }
+
+  /* Styles spécifiques pour le mode paysage */
+  @media (orientation: landscape) {
+    .container {
+      width: 70%;
+      margin: 0 auto;
+    }
+
+    .swiper {
+      height: 350px;
+    }
+
+    .hero-content h2 {
+      width: 70%;
+    }
+
+    .post-thumbnail img,
+    .post-content {
+      width: 75%;
+    }
   }
 }
 
-/* Laptop Devices (portrait and landscape) ex iPad Pro*/
+/* Laptop Devices (portrait and landscape) ex iPad Pro */
 @media only screen and (min-width: 1024px) and (max-width: 1439px) {
   body {
     margin-left: 10px;
     margin-right: 10px;
   }
-  
+
   .site-logo img {
     width: 180px;
     height: auto;
@@ -1182,6 +1418,10 @@ textarea.wpcf7-form-control {
     margin-bottom: 20px;
   }
 
+  .modal-content {
+    width: 450px;
+  }
+
   .swiper {
     width: 80%;
     height: 400px;
@@ -1189,24 +1429,40 @@ textarea.wpcf7-form-control {
 
   .wp-block-button__link {
     margin: 0;
-    margin-left: -28px;
+    margin-left: -20px;
     margin-top: 25px;
     margin-bottom: 35px;
   }
-  
-  .title-jury-comments h2{
+
+  .title-jury-comments h2 {
     margin: 0 auto;
     width: 80%;
     margin-bottom: 30px;
   }
 
   #contactBtn {
-    margin-left: 23%;
+    left: 50%;
   }
 
   .thumbnail-gg img {
     display: block;
     width: 150px;
-    height:176px;
+    height: 176px;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .marquee-container {
+    overflow: auto; /* Allow scrolling */
+  }
+
+  .box {
+    width: 100px;
+    height: 100px;
+  }
+
+  .box span {
+    transform: rotateY(calc(var(--i) * 36deg)) translateZ(300px);
   }
 }

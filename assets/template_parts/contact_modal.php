@@ -11,7 +11,7 @@
     <div class="modal-content">
         <div class="modal-header">
             <h2>Me contacter</h2> 
-            <p>Mon E-Mail: contact@gregory-goix.fr</p>
+            <p>Mon E-Mail: gregory.goix@gmail.com</p>
         </div>    
         <div class="modal-body">
             <?php echo do_shortcode('[contact-form-7 id="e232a57" title="formulaire_de_contact"]'); ?>

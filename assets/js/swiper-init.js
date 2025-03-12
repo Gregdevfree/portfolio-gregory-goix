@@ -1,8 +1,13 @@
-// Swiper Projects
+// Script for Swiper Projects
 document.addEventListener('DOMContentLoaded', function () {
+  // Variables pour contrôler le carrousel
+  let swiper
+  let isMenuOpen = false
+  let isModalOpen = false
+
   // Vérifier que Swiper est défini
   if (typeof Swiper !== 'undefined') {
-    var swiper = new Swiper('.mySwiper', {
+    swiper = new Swiper('.mySwiper', {
       effect: 'fade', // Ajoute l'effet de transition en fondu
       fadeEffect: {
         crossFade: true // Permet une transition fluide entre les slides
@@ -35,4 +40,3 @@ document.addEventListener('DOMContentLoaded', function () {
     })
   }
 })
-
